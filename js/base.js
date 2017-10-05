@@ -16,7 +16,7 @@
         taskData.push(newTask);
         store.set('taskData',taskData);
         refreshPage();
-        $add_task_input.val('');
+        $add_task_input.val(null);
     });
 
     // 删除按钮点击操作

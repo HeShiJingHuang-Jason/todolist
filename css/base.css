@@ -1,0 +1,148 @@
+*{
+    box-sizing: border-box;
+    outline: 0;
+}
+
+body {
+    background: #00334b;
+    color: #fff;
+}
+
+.container{
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+h1{
+    text-align: center;
+}
+
+.task-list{
+    margin: 8px 0;
+}
+
+textarea,
+input[type="text"],
+input[type="date"]{
+    width: 100%;
+    border: 0;
+    border-radius: 3px;
+    padding: 10px;
+    background: #eee;
+    -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    -moz-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    box-shadow: 0 2px 3px rgba(0,0,0,.4);
+}
+
+textarea:hover,
+textarea:focus,
+input[type="text"]:hover,
+input[type="date"]:hover,
+input[type="text"]:focus,
+input[type="date"]:focus{
+    background: #fff;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.add-task input[type="text"]{
+    /*float: left;*/
+    width: 83%;
+    margin-right: 1%;
+    -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    -moz-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    box-shadow: 0 2px 3px rgba(0,0,0,.4);
+}
+
+.add-task [type="submit"]
+{
+    width: 15%;
+    background: #97d5f3;
+    -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    -moz-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    box-shadow: 0 2px 3px rgba(0,0,0,.4);
+}
+
+.task-item
+{
+    padding: 10px;
+    background: #fff;
+    color: #333;
+    margin-bottom: 2px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    -moz-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    cursor: pointer;
+    -webkit-transition: background .1.5s;
+    -moz-transition: background .1.5s;
+    -ms-transition: background .1.5s;
+    -o-transition: background .1.5s;
+    transition: background .1.5s; 
+}
+
+.task-detail{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+    color: #333;
+    background: #fff;
+    display: none;
+}
+
+.task-detail .content {
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+.task-detail>*{
+    margin-bottom: 10px;
+}
+
+.task-detail-mask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(30,30,30,.6);
+    border-radius: 3px;
+    padding: 10px;
+    display: none;
+}
+
+[class^="action"]{
+    float: right;
+    padding: 0 10px;
+}
+
+.task-content{
+    padding: 0 10px;
+}
+
+.task-item:hover{
+    background: #ddd;
+}
+
+.add-task [type="submit"]:hover
+{
+    background: #9fd4ef;
+}
+
+span.action-detail:hover{
+    color: red;
+}
+
+span.action-delete:hover{
+    color: red;
+}

@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/HeShiJingHuang-Jason/todolist/issues"
   },
-  "homepage": "https://github.com/HeShiJingHuang-Jason/todolist#readme"
+  "homepage": "https://github.com/HeShiJingHuang-Jason/todolist#readme",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "normalize.css": "^7.0.0",
+    "store": "^2.0.12"
+  }
 }

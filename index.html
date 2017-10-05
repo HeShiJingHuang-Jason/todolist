@@ -2,9 +2,49 @@
 <html>
 <head>
     <title>To Do List</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
 </head>
 <body>
-
+    <!--容器开始-->
+    <div class="container">
+        <h1>My To Do</h1>
+        <!-- 添加任务 -->
+        <div class="add-task">
+            <input id="add-task-input" type="text" name="" placeholder="e.g. 英语">
+            <button id="add-task-button" type="submit">submit</button>
+        </div>
+        <!-- 清单列表 -->
+        <div class="task-list">
+            <!-- 单个任务 -->
+            <!-- <div class="task-item">
+                <span><input type="checkbox" name="done"></span>
+                <span class="task-content">item content 1</span>
+                <span>delete</span>
+                <span>detail</span>
+            </div> -->
+        </div>
+        <!-- 面纱效果 -->
+        <div class="task-detail-mask"></div>
+        <!-- 任务详情 -->
+        <div class="task-detail">
+            <!-- 任务详情 -->
+            <div class="content">
+                英语
+            </div>
+            <!-- 任务描述 -->
+            <div class="description">
+                <textarea id=""></textarea>
+            </div>
+            <!-- 任务时间提醒 -->
+            <div class="remind">
+                <input type="date" name="">
+                <button type="submit">submit</button>
+            </div>
+        </div>
+    </div>
 </body>
-<script type="text/javascript" src="index.js"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/store/dist/store.legacy.min.js"></script>
+<script src="js/base.js"></script>
 </html>

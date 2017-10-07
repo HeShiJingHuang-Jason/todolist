@@ -60,13 +60,19 @@ button {
     box-shadow: 0 2px 3px rgba(0,0,0,.4);
 }
 
-.add-task [type="submit"]
+[type="submit"]
 {
     width: 15%;
     background: #97d5f3;
     -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.4);
     -moz-box-shadow: 0 2px 3px rgba(0,0,0,.4);
     box-shadow: 0 2px 3px rgba(0,0,0,.4);
+}
+
+div.remind>button {
+    width: 20%;
+    float: right;
+    margin-top: 20px;
 }
 
 .task-item
@@ -87,19 +93,38 @@ button {
     transition: background .1.5s; 
 }
 
+/*详细任务页面样式*/
 .task-detail{
     position: absolute;
-    bottom: 0;
+    top: 0;
     right: 0;
-    width: 50%;
-    height: 100%;
+    width: 60%;
+    height: 350px;
     padding: 10px;
     color: #333;
     background: #fff;
+    overflow: scroll;
     display: none;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    -moz-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    box-shadow: 0 2px 3px rgba(0,0,0,.4);
+    -webkit-transition: background .1.5s;
+    -moz-transition: background .1.5s;
+    -ms-transition: background .1.5s;
+    -o-transition: background .1.5s;
+    transition: background .1.5s;
 }
 
-.task-detail .content {
+div.description {
+    margin-bottom: 15px;
+}
+
+#detailDescription {
+    height: 100px;
+}
+
+.task-detail .title {
     padding: 10px;
     cursor: pointer;
     font-weight: 900;
@@ -110,7 +135,7 @@ button {
 }
 
 .task-detail-mask {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
@@ -126,7 +151,7 @@ button {
     padding: 0 10px;
 }
 
-.task-content{
+.task-title{
     padding: 0 10px;
 }
 
@@ -145,4 +170,9 @@ span.action-detail:hover{
 
 span.action-delete:hover{
     color: red;
+}
+
+/*Test*/
+input.titleInput {
+    display: none;
 }

@@ -14,33 +14,75 @@
         refreshPage();
         listenAddTask();
         listenClickMask();
+        listenBuilAddTask();
     }
 
     //刷新页面
     function refreshPage()
     {
-        var templteResult = '';
+        // 获取当前系统时间
+        var date = new Date();
+        var day = date.getDate();
+        var dateFormat = date.getFullYear()+'-'
+            +(date.getMonth()+1)+'-'+(day<10?'0'+day:day);
+        var $taskList               = $('.task-list');
+        var $todayTaskList          = $('.today-task-list');
+        var $unfinishedTaskList     = $('.unfinished-task-list');
+        var $finishedTaskList       = $('.finished-task-list');
+        console.log('$unfinishedTaskList ',$unfinishedTaskList);
+        //清空原始list
+        $todayTaskList.html('');
+        $unfinishedTaskList.html('');
+        $finishedTaskList.html('');
         for (var i = taskData.length - 1; i >= 0; i--) {
-            templteResult = templteResult + 
-                buildTemplet(taskData[i].title,i);
+            var $templteResult = buildTemplet(taskData[i].title,i);
+            // 未完成
+            if (!taskData[i].isCompleted) {
+                //判断是否是今天任务
+                if (taskData[i].dueTime===dateFormat) {
+                    $todayTaskList.prepend($templteResult);
+                }
+                else{
+                    $unfinishedTaskList.prepend($templteResult);
+                }
+            }
+            else{
+                if (taskData[i].dueTime===dateFormat) {
+                    $templteResult.addClass('itemCompleted');
+                    $todayTaskList.append($templteResult);
+                }
+                else{
+                    $templteResult.addClass('itemCompleted');
+                    $finishedTaskList.prepend($templteResult);
+                }
+                // $templteResult.addClass('itemCompleted');
+                // $taskList.append($templteResult);
+            }
         }
-        $('.task-list').html(templteResult);
         deleteAction();
         listenDetailAction();
         listenDblClickTaskItem();
+        listenCheckBoxIsCompleted();
     }
 
     //生成模板
     function buildTemplet (title,index){
         if (!title) return;
+        var isCompleted = taskData[index].isCompleted;
+        var isChecked = isCompleted?'checked="checked"':'';
+        var isCompletedDisplay = isCompleted?"dl-show":"dl-hide";
+        var itemCompleted = isCompleted?" itemCompleted":"";
+        console.log('taskData[index]',taskData[index]);
+        console.log('isCompleted', isCompleted);
         var templete = 
             '<div class="task-item" data-index=' + index +'>'+
-            '<span><input type="checkbox" name="done"></span>'+
+            '<span><input type="checkbox" class="isCompleted"'+isChecked +'></span>'+
             '<span class="task-content">'+ title +'</span>'+
             '<span class="action-delete">删除</span>'+
             '<span class="action-detail">详细</span>'+
+            '<div class="deleteLine '+ isCompletedDisplay +'"></div>'+
             '</div>'
-        return templete;
+        return $(templete);
     }
 
     //删除task中的数据
@@ -96,6 +138,16 @@
     // 隐藏详细任务
     function hideDetail(){
         $('.task-detail').hide();
+    }
+
+    // 显示删除线效果 
+    function showDeleteLine(){
+        $('.deleteLine').show();
+    }
+
+    // 隐藏删除线效果
+    function hideDeleteLine(){
+        $('.deleteLine').hide();
     }
 
     //生成任务详情模板
@@ -175,14 +227,32 @@
             updateData(index,data);
             hideDetail();
             hideMask();
+            refreshPage();
         })
     }
 
-    // 更新详细任务数据
+    function listenCheckBoxIsCompleted(){
+        $('.isCompleted').change(function(){
+            var $this = $(this);
+            var index = $this.parent().parent().attr('data-index');
+            var data         = {};
+            data.isCompleted = $this.prop('checked');
+            updateData(index,data);
+            refreshPage();
+        })
+    }
+
+    // 更新任务数据
     function updateData(index,data){
         console.log('taskData[index]',taskData[index]);
         taskData[index] = $.extend({},taskData[index],data);
         store.set('taskData',taskData);
+    }
+
+    function listenBuilAddTask(){
+        $('#bulk-task-button').click(function(){
+            $('.bulk-add-task').show();
+        });
     }
 
 })();

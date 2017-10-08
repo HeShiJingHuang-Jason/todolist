@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>To Do List</title>
     <link rel="stylesheet" type="text/css" href="node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/base.css">
@@ -8,21 +9,54 @@
 <body>
     <!--容器开始-->
     <div class="container">
-        <h1>My To Do</h1>
+        <h1>我的任务</h1>
         <!-- 添加任务 -->
         <form class="add-task">
-            <input id="add-task-input" type="text" name="" placeholder="e.g. 英语">
-            <button id="add-task-button" type="submit">submit</button>
+            <input id="add-task-input" type="text" name="" placeholder="例如： 英语">
+            <button id="add-task-button" type="submit">新建</button>
+            <button id="bulk-task-button">批量创建</button>
         </form>
         <!-- 清单列表 -->
         <div class="task-list">
-            
+            <div class="today-tasks">
+                <h3>今日任务</h3>
+                <div class="today-task-list"></div>
+            </div>
+            <div class="unfinished-tasks">
+                <h3>待完成任务</h3>
+                <div class="unfinished-task-list"></div>
+            </div>
+            <div class="finished-tasks">
+                <h3>历史完成任务</h3>
+                <div class="finished-task-list"></div>
+            </div>
         </div>
         <!-- 面纱效果 -->
         <div class="task-detail-mask"></div>
         <!-- 任务详情 -->
         <div class="task-detail">
-            
+        </div>
+        <div class="bulk-add-task">
+            <div class="left-detail">
+                <h4>详细信息</h4>
+                <input type="text" class="title"></input>
+                <textarea class="desc"></textarea>
+            </div>
+            <div class="timeSetting">
+                <h4>重复</h4>
+                <input type="date" class="time" name="">
+                <input type="checkbox" name="">周一
+                <input type="checkbox" name="">周二
+                <input type="checkbox" name="">周三
+                <input type="checkbox" name="">周四
+                <input type="checkbox" name="">周五
+                <input type="checkbox" name="">周六
+                <input type="checkbox" name="">周天
+                <input type="date" class="time" name="">
+            </div>
+            <div class="bulk-add-Action">
+                <button>提交</button>
+            </div>
         </div>
     </div>
 </body>

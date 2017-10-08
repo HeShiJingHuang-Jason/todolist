@@ -53,14 +53,20 @@ button {
 
 .add-task input[type="text"]{
     /*float: left;*/
-    width: 83%;
+    width: 67%;
     margin-right: 1%;
     -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.4);
     -moz-box-shadow: 0 2px 3px rgba(0,0,0,.4);
     box-shadow: 0 2px 3px rgba(0,0,0,.4);
 }
 
-[type="submit"]
+/*checkbox效果*/
+input[type="checkbox"] {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#bulk-task-button,[type="submit"]
 {
     width: 15%;
     background: #97d5f3;
@@ -77,6 +83,7 @@ div.remind>button {
 
 .task-item
 {
+    position: relative;
     padding: 10px;
     background: #fff;
     color: #333;
@@ -92,6 +99,31 @@ div.remind>button {
     -o-transition: background .1.5s;
     transition: background .1.5s; 
 }
+
+/*删除线效果*/
+.deleteLine {
+    position: absolute;
+    border: 1px solid;
+    width: 80%;
+    top: 19px;
+    left: 30px;
+}
+
+/*显示删除线*/
+.dl-show {
+    display: block;
+}
+
+/*隐藏删除线*/
+.dl-hide {
+    display: none;
+}
+
+/*完成的任务条显示效果*/
+.itemCompleted {
+    background: #eee;
+}
+
 
 /*详细任务页面样式*/
 .task-detail{
@@ -174,5 +206,28 @@ span.action-delete:hover{
 
 /*Test*/
 input.titleInput {
+    display: none;
+}
+
+.left-detail{
+    float: left;
+    width: 30%;
+}
+
+textarea.desc{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.time{
+    width: 30%;
+}
+
+.timeSetting{
+    float: right;
+    width: 40%;
+}
+
+.bulk-add-task{
     display: none;
 }

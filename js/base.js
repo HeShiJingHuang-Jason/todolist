@@ -14,7 +14,7 @@
         refreshPage();
         listenAddTask();
         listenClickMask();
-        listenBuilAddTask();
+        listenBulkAddTask();
     }
 
     //刷新页面
@@ -150,6 +150,10 @@
         $('.deleteLine').hide();
     }
 
+    function showBulkAdd(){
+        $('.bulk-add-task').show();
+    }
+
     //生成任务详情模板
     function buildDetailTpl(index){
         var dataItem = taskData[index];
@@ -205,6 +209,14 @@
         })
     }
 
+    // 批量新建任务
+    function listenBulkAddTask(){
+        $('#bulk-task-button').click(function(event){
+            event.preventDefault();
+            showBulkAdd();
+        });
+    }
+
     // 点击详细标题变成编辑事件
     function listenClickTitle(index)
     {
@@ -247,12 +259,6 @@
         console.log('taskData[index]',taskData[index]);
         taskData[index] = $.extend({},taskData[index],data);
         store.set('taskData',taskData);
-    }
-
-    function listenBuilAddTask(){
-        $('#bulk-task-button').click(function(){
-            $('.bulk-add-task').show();
-        });
     }
 
 })();

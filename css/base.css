@@ -217,7 +217,7 @@ input.titleInput {
 textarea.desc{
     margin-top: 10px;
     width: 100%;
-    height: 80px;
+    height: 76px;
 }
 
 .time{
@@ -230,5 +230,16 @@ textarea.desc{
 }
 
 .bulk-add-task{
+    position: absolute;
+    top: 185px;
     display: none;
+    float: left;
+    background: white;
+    color: black;
+}
+
+/*批量提交按钮*/
+.bulk-add-Action {
+    float: right;
+    margin-top: 20px;
 }

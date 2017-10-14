@@ -15,6 +15,7 @@
         listenAddTask();
         listenClickMask();
         listenBulkAddTask();
+        submitInBulkAdd();
     }
 
     //刷新页面
@@ -29,7 +30,6 @@
         var $todayTaskList          = $('.today-task-list');
         var $unfinishedTaskList     = $('.unfinished-task-list');
         var $finishedTaskList       = $('.finished-task-list');
-        console.log('$unfinishedTaskList ',$unfinishedTaskList);
         //清空原始list
         $todayTaskList.html('');
         $unfinishedTaskList.html('');
@@ -65,6 +65,13 @@
         listenCheckBoxIsCompleted();
     }
 
+    function formatDate(date){
+        var day = date.getDate();
+        var dateFormat = date.getFullYear()+'-'
+            +(date.getMonth()+1)+'-'+(day<10?'0'+day:day);
+        return dateFormat;
+    }
+
     //生成模板
     function buildTemplet (title,index){
         if (!title) return;
@@ -72,8 +79,6 @@
         var isChecked = isCompleted?'checked="checked"':'';
         var isCompletedDisplay = isCompleted?"dl-show":"dl-hide";
         var itemCompleted = isCompleted?" itemCompleted":"";
-        console.log('taskData[index]',taskData[index]);
-        console.log('isCompleted', isCompleted);
         var templete = 
             '<div class="task-item" data-index=' + index +'>'+
             '<span><input type="checkbox" class="isCompleted"'+isChecked +'></span>'+
@@ -154,6 +159,10 @@
         $('.bulk-add-task').show();
     }
 
+    function hideBulkAdd(){
+        $('.bulk-add-task').hide();
+    }
+
     //生成任务详情模板
     function buildDetailTpl(index){
         var dataItem = taskData[index];
@@ -179,12 +188,48 @@
             var taskContent = $add_task_input.val();
             if (!taskContent) return;
             newTask.title = taskContent;
-            taskData.push(newTask);
-            store.set('taskData',taskData);
+            addTask(newTask);
             refreshPage();
             $add_task_input.val(null);
         });
     }
+
+    function addTask(newTask){
+        console.log('taskData',taskData);
+        taskData.push(newTask);
+        store.set('taskData',taskData);
+    }
+
+    function submitInBulkAdd()
+    {
+        $('#bulk-add-button').on('click',function(){
+            var data = {}
+            var title          = $('.title_bulk').val();
+            var description    = $('.desc_bulk').val();
+            var startTime       = ToDate($('.starttime').val());
+            var endTime         = ToDate($('.endtime').val());
+            while(endTime>=startTime){
+                var data = {}
+                data.title          = title;
+                data.description    = description;
+                data.dueTime = formatDate(startTime);
+                addTask(data);
+                startTime.setDate(startTime.getDate() + 1);
+            }
+            hideBulkAdd();
+            hideMask();
+            refreshPage();
+        });
+    }
+
+    function ToDate(str) {  
+        var tempDate = new Date();  
+        var list = str.split("-");  
+        tempDate.setFullYear(list[0]);  
+        tempDate.setMonth(list[1] - 1);  
+        tempDate.setDate(list[2]);  
+        return tempDate;  
+    }  
     
 
     // 点击面纱恢复事件
@@ -192,6 +237,7 @@
             $('.task-detail-mask').on('click',function(){
             hideMask();
             hideDetail();
+            hideBulkAdd();
         })
     }
 
@@ -213,6 +259,7 @@
     function listenBulkAddTask(){
         $('#bulk-task-button').click(function(event){
             event.preventDefault();
+            showMask();
             showBulkAdd();
         });
     }
@@ -256,7 +303,6 @@
 
     // 更新任务数据
     function updateData(index,data){
-        console.log('taskData[index]',taskData[index]);
         taskData[index] = $.extend({},taskData[index],data);
         store.set('taskData',taskData);
     }

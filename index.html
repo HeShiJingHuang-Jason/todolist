@@ -37,27 +37,25 @@
         <div class="task-detail">
         </div>
         <div class="bulk-add-task">
-            <div>
-                <div class="left-detail">
-                    <h4>详细信息</h4>
-                    <input type="text" class="title" placeholder="标题"></input>
-                    <textarea class="desc" placeholder="任务描述"></textarea>
-                </div>
-                <div class="timeSetting">
-                    <h4>重复</h4>
-                    <input type="date" class="time" name="">
-                    <input type="checkbox" name="">周一
-                    <input type="checkbox" name="">周二
-                    <input type="checkbox" name="">周三
-                    <input type="checkbox" name="">周四
-                    <input type="checkbox" name="">周五
-                    <input type="checkbox" name="">周六
-                    <input type="checkbox" name="">周天
-                    <input type="date" class="time" name="">
-                </div>
+            <div class="left-detail">
+                <h4>详细信息</h4>
+                <input type="text" class="title_bulk" placeholder="标题"></input>
+                <textarea class="desc_bulk" placeholder="任务描述"></textarea>
+            </div>
+            <div class="timeSetting">
+                <h4>重复</h4>
+                <input type="date" class="starttime" name="">
+                <input type="checkbox" name="">周一
+                <input type="checkbox" name="">周二
+                <input type="checkbox" name="">周三
+                <input type="checkbox" name="">周四
+                <input type="checkbox" name="">周五
+                <input type="checkbox" name="">周六
+                <input type="checkbox" name="">周天
+                <input type="date" class="endtime" name="">
             </div>
             <div class="bulk-add-Action">
-                <button>提交</button>
+                <button id="bulk-add-button">提交</button>
             </div>
         </div>
     </div>

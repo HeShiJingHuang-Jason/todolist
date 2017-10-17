@@ -79,6 +79,7 @@ div.remind>button {
     width: 20%;
     float: right;
     margin-top: 20px;
+    margin-right: 10px;
 }
 
 .task-item

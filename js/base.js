@@ -123,6 +123,7 @@
         showDetail();
         listenClickTitle(index);
         listenUpdateDetail(index);
+        listenCancelDetail();
     }
 
     // 显示面纱效果
@@ -174,6 +175,7 @@
                 '</div>'+
                 '<div class="remind">'+
                 '<input type="date" id="detailDateTime" value='+ dataItem.dueTime +'>'+
+                '<button id="detailCancelBtn" type="submit">cancel</button>'+
                 '<button id="detailUpdateBtn" type="submit">submit</button>'+
                 '</div></form>'
         return tpl;
@@ -209,11 +211,14 @@
             var startTime       = ToDate($('.starttime').val());
             var endTime         = ToDate($('.endtime').val());
             while(endTime>=startTime){
-                var data = {}
-                data.title          = title;
-                data.description    = description;
-                data.dueTime = formatDate(startTime);
-                addTask(data);
+                var weekIndex = startTime.getDay();
+                if ($('#week_'+weekIndex).is(":checked")) {
+                    var data = {}
+                    data.title          = title;
+                    data.description    = description;
+                    data.dueTime = formatDate(startTime);
+                    addTask(data);
+                }
                 startTime.setDate(startTime.getDate() + 1);
             }
             hideBulkAdd();
@@ -287,6 +292,14 @@
             hideDetail();
             hideMask();
             refreshPage();
+        })
+    }
+
+    function listenCancelDetail(){
+        $('#detailCancelBtn').on('click',function(e){
+            e.preventDefault();
+            hideDetail();
+            hideMask();
         })
     }
 

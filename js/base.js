@@ -16,6 +16,7 @@
         listenClickMask();
         listenBulkAddTask();
         submitInBulkAdd();
+        listenBulkCancel();
     }
 
     //刷新页面
@@ -225,6 +226,14 @@
             hideMask();
             refreshPage();
         });
+    }
+
+    function listenBulkCancel(){
+        $('#bulk-cancel-button').on('click',function(e){
+            e.preventDefault();
+            hideBulkAdd();
+            hideMask();
+        })
     }
 
     function ToDate(str) {  

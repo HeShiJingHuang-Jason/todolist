@@ -213,6 +213,7 @@ input.titleInput {
 .left-detail{
     float: left;
     width: 55%;
+    height: 185px;
 }
 
 textarea.desc{

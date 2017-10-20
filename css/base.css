@@ -214,6 +214,7 @@ input.titleInput {
     float: left;
     width: 55%;
     height: 185px;
+    margin-left: 10px;
 }
 
 textarea.desc{
@@ -229,6 +230,7 @@ textarea.desc{
 .timeSetting{
     float: right;
     width: 40%;
+    margin-right: 10px;
 }
 
 .bulk-add-task{
@@ -244,4 +246,11 @@ textarea.desc{
 .bulk-add-Action {
     float: right;
     margin-top: 20px;
+    margin-right: 10px;
+}
+
+
+.desc_bulk {
+    margin-top: 10px;
+    height: 80px;
 }

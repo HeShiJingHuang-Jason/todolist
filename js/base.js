@@ -64,6 +64,8 @@
         listenDetailAction();
         listenDblClickTaskItem();
         listenCheckBoxIsCompleted();
+        listenDownClick();
+        listenRightClick();
     }
 
     function formatDate(date){
@@ -327,6 +329,24 @@
     function updateData(index,data){
         taskData[index] = $.extend({},taskData[index],data);
         store.set('taskData',taskData);
+    }
+
+    // 点击向下箭头事件 
+    function listenDownClick(){
+        $('.down').on('click',function(e){
+            $('.down').hide();
+            $('.finished-task-list').hide();
+            $('.right').show();
+        })
+    }
+
+    // 点击向右箭头事件
+    function listenRightClick(){
+        $('.right').on('click',function(e){
+            $('.right').hide();
+            $('.finished-task-list').show();
+            $('.down').show();
+        })
     }
 
 })();

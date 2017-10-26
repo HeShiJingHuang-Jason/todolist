@@ -81,7 +81,7 @@ div.remind>button {
     margin-top: 20px;
     margin-right: 10px;
 }
-
+/*任务列表项*/
 .task-item
 {
     position: relative;
@@ -254,3 +254,26 @@ textarea.desc{
     margin-top: 10px;
     height: 80px;
 }
+
+.finished-task-list {
+    margin-top: 18.72px;
+    display: none;
+}
+
+.finished-tasks {
+    margin-top: 18.72px;
+}
+
+.finished-tasks h3 {
+    display: inline;
+}
+
+i.down {
+    cursor: pointer;
+    display: none;
+}
+
+i.right {
+    cursor: pointer;
+}
+

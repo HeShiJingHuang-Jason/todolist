@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/HeShiJingHuang-Jason/todolist#readme",
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "normalize.css": "^7.0.0",
     "store": "^2.0.12"

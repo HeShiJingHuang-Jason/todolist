@@ -103,11 +103,13 @@
     // 删除按钮点击操作
     function deleteAction(){
             $('.action-delete').click(function(){
-            confirm('确认删除？');
-            var $this = $(this);
-            var index = $this.parent().attr('data-index');
-            deleteData(index);
-            refreshPage();
+            var r = confirm('确认删除？');
+            if (r) {
+                var $this = $(this);
+                var index = $this.parent().attr('data-index');
+                deleteData(index);
+                refreshPage();
+            }
         });
     }
 
